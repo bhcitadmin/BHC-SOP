@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BHC SOP Library Tabs</title>
+
+  <style>
+    :root {
+      --teams-purple: #6264a7;
+      --teams-purple-dark: #464775;
+      --teams-bg: #f5f5f5;
+      --card-bg: #ffffff;
+      --text: #242424;
+      --muted: #616161;
+      --border: #e1dfdd;
+      --shadow: 0 14px 36px rgba(0, 0, 0, 0.12);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(98, 100, 167, 0.22), transparent 34%),
+        linear-gradient(135deg, #f8f8ff 0%, var(--teams-bg) 55%, #eef1ff 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .page {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+
+    header {
+      background: linear-gradient(
+        135deg,
+        var(--teams-purple),
+        var(--teams-purple-dark)
+      );
+      color: #fff;
+      padding: 34px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 12px;
+      font-weight: 700;
+      opacity: 0.86;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 5vw, 50px);
+      line-height: 1.05;
+      font-weight: 750;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .tabs-wrap {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(225, 223, 221, 0.85);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 14px;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-button {
+      border: 0;
+      border-radius: 14px;
+      background: #f4f4f4;
+      color: var(--muted);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+      padding: 14px 18px;
+      transition: 180ms ease;
+      text-align: center;
+      min-width: 220px;
+      flex: 1 1 240px;
+    }
+
+    .tab-button:hover,
+    .tab-button:focus-visible {
+      background: #ecebff;
+      color: var(--teams-purple-dark);
+      outline: none;
+    }
+
+    .tab-button.active {
+      background: var(--teams-purple);
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(98, 100, 167, 0.28);
+    }
+
+    .panel {
+      display: none;
+      padding: 30px;
+      animation: fadeIn 180ms ease-in-out;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .content-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(24px, 3vw, 34px);
+    }
+
+    .description {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 760px;
+    }
+
+    .open-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 200px;
+      text-decoration: none;
+      color: #fff;
+      background: var(--teams-purple);
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-weight: 750;
+      box-shadow: 0 10px 22px rgba(98, 100, 167, 0.26);
+      transition: 180ms ease;
+      white-space: nowrap;
+    }
+
+    .open-link:hover,
+    .open-link:focus-visible {
+      background: var(--teams-purple-dark);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        padding: 24px 0;
+      }
+
+      header {
+        padding: 26px;
+      }
+
+      .tabs {
+        flex-direction: column;
+      }
+
+      .content-card {
+        grid-template-columns: 1fr;
+      }
+
+      .open-link {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header>
+      <div class="eyebrow">BHC Consultants</div>
+
+      <h1>Standard Operating Procedure Library</h1>
+
+      <p class="subtitle">
+        Access SOP folders and operational documentation for departments,
+        governance, project delivery, finance, HR, and technical processes.
+      </p>
+    </header>
+
+    <section class="tabs-wrap" aria-label="Standard Operating Procedure">
+
+      <div class="tabs" role="tablist">
+
+        <button class="tab-button active"
+          id="tab-financial"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-financial"
+          type="button">
+          Financial Planning &amp; Controls
+        </button>
+
+        <button class="tab-button"
+          id="tab-business"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-business"
+          type="button">
+          Business Development &amp; Marketing
+        </button>
+
+        <button class="tab-button"
+          id="tab-it"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-it"
+          type="button">
+          IT &amp; Data Governance
+        </button>
+
+        <button class="tab-button"
+          id="tab-quality"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-quality"
+          type="button">
+          Quality &amp; Technical Risk
+        </button>
+
+        <button class="tab-button"
+          id="tab-invoice"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-invoice"
+          type="button">
+          Invoice Processing
+        </button>
+
+        <button class="tab-button"
+          id="tab-project"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-project"
+          type="button">
+          Project Management
+        </button>
+
+        <button class="tab-button"
+          id="tab-ownership"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-ownership"
+          type="button">
+          Ownership &amp; Governance
+        </button>
+
+        <button class="tab-button"
+          id="tab-hr"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-hr"
+          type="button">
+          HR SOP
+        </button>
+
+      </div>
+
+      <!-- Financial -->
+      <article class="panel active"
+        id="panel-financial"
+        role="tabpanel">
+
+        <div class="content-card">
+          <div>
+            <h2>Financial Planning &amp; Controls</h2>
+
+            <p class="description">
+              Access budgeting procedures, controls documentation,
+              planning standards, and finance-related SOP resources.
+            </p>
+
+            <p class="note">
+              Opens in SharePoint/OneDrive using your Microsoft 365 permissions.
+            </p>
+          </div>
+
+          <a class="open-link"
+            href="https://bhcconsultants-my.sharepoint.com/personal/nesselburn_bhcconsultants_com/_layouts/15/onedrive.aspx?ct=1779920701567&amp;or=OWA%2DNT%2DMail&amp;id=%2Fpersonal%2Fnesselburn%5Fbhcconsultants%5Fcom%2FDocuments%2FSOP%20Library%20Project%2FFinancial%20Planning%20%26%20Controls"
+            target="_blank"
+            rel="noopener noreferrer">
+            Open Folder
+          </a>
+        </div>
+      </article>
+
+      <!-- Business -->
+      <article class="panel"
+        id="panel-business"
+        role="tabpanel">
+
+        <div class="content-card">
+          <div>
+            <h2>Business Development &amp; Marketing</h2>
+
+            <p class="description">
+              Access proposal resources, marketing SOPs, business development
+              standards, and client engagement documentation.
+            </p>
+
+            <p class="note">
+              Opens in SharePoint/OneDrive using your Microsoft 365 permissions.
+            </p>
+          </div>
+
+          <a class="open-link"
+            href="https://bhcconsultants-my.sharepoint.com/personal/nesselburn_bhcconsultants_com/_layouts/15/onedrive.aspx?ct=1779920701567&amp;or=OWA%2DNT%2DMail&amp;id=%2Fpersonal%2Fnesselburn%5Fbhcconsultants%5Fcom%2FDocuments%2FSOP%20Library%20Project%2FBusiness%20Development%20%26%20Marketing"
+            target="_blank"
+            rel="noopener noreferrer">
+            Open Folder
+          </a>
+        </div>
+      </article>
+
+      <!-- IT -->
+      <article class="panel"
+        id="panel-it"
+        role="tabpanel">
+
+        <div class="content-card">
+          <div>
+            <h2>IT &amp; Data Governance</h2>
+
+            <p class="description">
+              Access SOPs related to information technology,
+              cybersecurity, systems governance, and data management.
+            </p>
+
+            <p class="note">
+              Opens in SharePoint/OneDrive using your Microsoft 365 permissions.
+            </p>
+          </div>
+
+          <a class="open-link"
+            href="https://bhcconsultants-my.sharepoint.com/personal/nesselburn_bhcconsultants_com/_layouts/15/onedrive.aspx?ct=1779920701567&amp;or=OWA%2DNT%2DMail&amp;id=%2Fpersonal%2Fnesselburn%5Fbhcconsultants%5Fcom%2FDocuments%2FSOP%20Library%20Project%2FIT%20%26%20Data%20Governance"
+            target="_blank"
+            rel="noopener noreferrer">
+            Open Folder
+          </a>
+        </div>
+      </article>
+
+      <!-- Quality -->
+      <article class="panel"
+        id="panel-quality"
+        role="tabpanel">
+
+        <div class="content-card">
+          <div>
+            <h2>Quality &amp; Technical Risk</h2>
+
+            <p class="description">
+              Access quality assurance procedures, technical review standards,
+              and operational risk management documentation.
+            </p>
+
+            <p class="note">
+              Opens in SharePoint/OneDrive using your Microsoft 365 permissions.
+            </p>
+          </div>
+
+          <a class="open-link"
+            href="https://bhcconsultants-my.sharepoint.com/personal/nesselburn_bhcconsultants_com/_layouts/15/onedrive.aspx?ct=1779920701567&amp;or=OWA%2DNT%2DMail&amp;id=%2Fpersonal%2Fnesselburn%5Fbhcconsultants%5Fcom%2FDocuments%2FSOP%20Library%20Project%2FQuality%20%26%20Technical%20Risk"
+            target="_blank"
+            rel="noopener noreferrer">
+            Open Folder
+          </a>
+        </div>
+      </article>
+
+      <!-- Invoice -->
+      <article class="panel"
+        id="panel-invoice"
+        role="tabpanel">
+
+        <div class="content-card">
+          <div>
+            <h2>Invoice Processing</h2>
+
+            <p class="description">
+              Access invoice workflows, accounting processing standards,
+              approvals, and billing procedure documentation.
+            </p>
+
+            <p class="note">
+              Opens in SharePoint/OneDrive using your Microsoft 365 permissions.
+            </p>
+          </div>
+
+          <a class="open-link"
+            href="https://bhcconsultants-my.sharepoint.com/personal/nesselburn_bhcconsultants_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fnesselburn%5Fbhcconsultants%5Fcom%2FDocuments%2FSOP%20Library%20Project%2FInvoice%20Processing&amp;viewid=427306a2%2D05bf%2D4273%2D98e8%2Df16a64752c2a&amp;ct=1779920701567&amp;or=OWA%2DNT%2DMail"
+            target="_blank"
+            rel="noopener noreferrer">
+            Open Folder
+          </a>
+        </div>
+      </article>
+
+      <!-- Project -->
+      <article class="panel"
+        id="panel-project"
+        role="tabpanel">
+
+        <div class="content-card">
+          <div>
+            <h2>Project Management</h2>
+
+            <p class="description">
+              Access project delivery standards, PM procedures,
+              planning templates, and project governance documentation.
+            </p>
+
+            <p class="note">
+              Opens in SharePoint/OneDrive using your Microsoft 365 permissions.
+            </p>
+          </div>
+
+          <a class="open-link"
+            href="https://bhcconsultants-my.sharepoint.com/personal/nesselburn_bhcconsultants_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fnesselburn%5Fbhcconsultants%5Fcom%2FDocuments%2FSOP%20Library%20Project%2FProject%20Management&amp;viewid=427306a2%2D05bf%2D4273%2D98e8%2Df16a64752c2a&amp;ct=1779920701567&amp;or=OWA%2DNT%2DMail"
+            target="_blank"
+            rel="noopener noreferrer">
+            Open Folder
+          </a>
+        </div>
+      </article>
+
+      <!-- Ownership -->
+      <article class="panel"
+        id="panel-ownership"
+        role="tabpanel">
+
+        <div class="content-card">
+          <div>
+            <h2>Ownership &amp; Governance</h2>
+
+            <p class="description">
+              Access governance structures, operational ownership standards,
+              executive procedures, and organizational documentation.
+            </p>
+
+            <p class="note">
+              Opens in SharePoint/OneDrive using your Microsoft 365 permissions.
+            </p>
+          </div>
+
+          <a class="open-link"
+            href="https://bhcconsultants-my.sharepoint.com/personal/nesselburn_bhcconsultants_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fnesselburn%5Fbhcconsultants%5Fcom%2FDocuments%2FSOP%20Library%20Project%2FOwnership%20%26%20Governance&amp;viewid=427306a2%2D05bf%2D4273%2D98e8%2Df16a64752c2a&amp;ct=1779920701567&amp;or=OWA%2DNT%2DMail"
+            target="_blank"
+            rel="noopener noreferrer">
+            Open Folder
+          </a>
+        </div>
+      </article>
+
+      <!-- HR -->
+      <article class="panel"
+        id="panel-hr"
+        role="tabpanel">
+
+        <div class="content-card">
+          <div>
+            <h2>HR SOP</h2>
+
+            <p class="description">
+              Access human resources procedures, onboarding documentation,
+              compliance standards, and HR operational resources.
+            </p>
+
+            <p class="note">
+              Opens in SharePoint/OneDrive using your Microsoft 365 permissions.
+            </p>
+          </div>
+
+          <a class="open-link"
+            href="https://bhcconsultants-my.sharepoint.com/personal/nesselburn_bhcconsultants_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fnesselburn%5Fbhcconsultants%5Fcom%2FDocuments%2FSOP%20Library%20Project%2FHR%20SOP&amp;viewid=427306a2%2D05bf%2D4273%2D98e8%2Df16a64752c2a&amp;ct=1779920701567&amp;or=OWA%2DNT%2DMail"
+            target="_blank"
+            rel="noopener noreferrer">
+            Open Folder
+          </a>
+        </div>
+      </article>
+
+    </section>
+
+  </main>
+
+  <script>
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const panels = document.querySelectorAll(".panel");
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+
+        tabButtons.forEach((tab) => {
+          tab.classList.remove("active");
+          tab.setAttribute("aria-selected", "false");
+        });
+
+        panels.forEach((panel) => {
+          panel.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        button.setAttribute("aria-selected", "true");
+
+        const panel = document.getElementById(
+          button.getAttribute("aria-controls")
+        );
+
+        panel.classList.add("active");
+      });
+    });
+  </script>
+
+</body>
+</html>
