@@ -1,26 +1,20 @@
+```html
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>BHC SOP Library</title>
+  <title>BHC SOP Library Tabs</title>
 
   <style>
-
     :root {
-
-      /* MATCHED TO LOGO BACKGROUND */
-      --header-blue: #3f557f;
-      --header-blue-dark: #32476d;
-      --accent-blue: #6fb6ff;
-
-      --teams-bg: #eef2f8;
+      --primary: #375d77;
+      --primary-dark: #2b4a5f;
+      --bg: #f5f5f5;
       --card-bg: #ffffff;
-      --text: #1f2937;
-      --muted: #5f6b7a;
-      --border: #d9dee7;
-
+      --text: #242424;
+      --muted: #616161;
+      --border: #e1dfdd;
       --shadow: 0 14px 36px rgba(0, 0, 0, 0.12);
       --radius: 22px;
     }
@@ -30,215 +24,107 @@
     }
 
     body {
-
       margin: 0;
-
-      font-family:
-        "Segoe UI",
-        Arial,
-        Helvetica,
-        sans-serif;
-
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(
-          circle at top left,
-          rgba(63, 85, 127, 0.18),
-          transparent 34%
-        ),
-        linear-gradient(
-          135deg,
-          #f6f8fc 0%,
-          var(--teams-bg) 55%,
-          #e7edf7 100%
-        );
-
+        radial-gradient(circle at top left, rgba(55, 93, 119, 0.20), transparent 34%),
+        linear-gradient(135deg, #f8fbfd 0%, var(--bg) 55%, #eef4f7 100%);
       color: var(--text);
       min-height: 100vh;
     }
 
     .page {
-
       width: min(1200px, calc(100% - 32px));
       margin: 0 auto;
       padding: 40px 0;
     }
 
-    /* HEADER */
-
     header {
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--header-blue),
-          var(--header-blue-dark)
-        );
-
+      background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-dark)
+      );
       color: #fff;
-
-      padding: 36px;
-
+      padding: 34px;
       border-radius: var(--radius);
-
       box-shadow: var(--shadow);
-
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
-    .brand-row {
-
-      display: flex;
-      align-items: center;
-      gap: 34px;
-      flex-wrap: wrap;
-    }
-
-    .company-logo {
-
-      width: 260px;
-      height: auto;
-      object-fit: contain;
-    }
-
-    .divider {
-
-      width: 1px;
-      height: 150px;
-
-      background:
-        rgba(255,255,255,0.28);
-    }
-
-    .brand-text {
-
-      flex: 1;
-      min-width: 300px;
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 12px;
+      font-weight: 700;
+      opacity: 0.9;
+      margin-bottom: 10px;
     }
 
     h1 {
-
-      margin: 0 0 14px;
-
-      font-size: clamp(34px, 5vw, 54px);
-
+      margin: 0 0 10px;
+      font-size: clamp(30px, 5vw, 50px);
       line-height: 1.05;
-
-      font-weight: 800;
-
-      letter-spacing: -0.02em;
+      font-weight: 750;
     }
 
     .subtitle {
-
-      margin: 0;
-
       max-width: 760px;
-
-      color: rgba(255,255,255,0.88);
-
-      font-size: 18px;
-
-      line-height: 1.7;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 17px;
+      line-height: 1.5;
     }
 
-    /* MAIN WRAPPER */
-
     .tabs-wrap {
-
-      background:
-        rgba(255,255,255,0.82);
-
-      border:
-        1px solid rgba(225,223,221,0.85);
-
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(225, 223, 221, 0.85);
       border-radius: var(--radius);
-
-      box-shadow:
-        0 10px 28px rgba(0,0,0,0.08);
-
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
       backdrop-filter: blur(12px);
-
       overflow: hidden;
     }
 
-    /* TABS */
-
     .tabs {
-
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-
-      padding: 18px;
-
+      gap: 10px;
+      padding: 14px;
       background: #fff;
-
-      border-bottom:
-        1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
     .tab-button {
-
       border: 0;
-
-      border-radius: 16px;
-
-      background: #f3f5f9;
-
-      color: #32476d;
-
+      border-radius: 14px;
+      background: #f4f4f4;
+      color: var(--muted);
       cursor: pointer;
-
       font: inherit;
-
       font-weight: 700;
-
-      font-size: 16px;
-
-      padding: 18px 20px;
-
+      padding: 14px 18px;
       transition: 180ms ease;
-
       text-align: center;
-
       min-width: 220px;
-
       flex: 1 1 240px;
     }
 
     .tab-button:hover,
     .tab-button:focus-visible {
-
-      background: #e4ecfb;
-
-      color: var(--header-blue-dark);
-
+      background: #e6eef3;
+      color: var(--primary-dark);
       outline: none;
     }
 
     .tab-button.active {
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--header-blue),
-          var(--header-blue-dark)
-        );
-
+      background: var(--primary);
       color: #fff;
-
-      box-shadow:
-        0 8px 18px rgba(63, 85, 127, 0.28);
+      box-shadow: 0 8px 18px rgba(55, 93, 119, 0.28);
     }
 
-    /* PANELS */
-
     .panel {
-
       display: none;
-
-      padding: 34px;
-
+      padding: 30px;
       animation: fadeIn 180ms ease-in-out;
     }
 
@@ -247,7 +133,6 @@
     }
 
     @keyframes fadeIn {
-
       from {
         opacity: 0;
         transform: translateY(6px);
@@ -259,131 +144,66 @@
       }
     }
 
-    /* CONTENT CARD */
-
     .content-card {
-
       background: var(--card-bg);
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 22px;
-
-      padding: 34px;
-
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
       display: grid;
-
       grid-template-columns: 1fr auto;
-
-      gap: 30px;
-
+      gap: 24px;
       align-items: center;
     }
 
     h2 {
-
       margin: 0 0 12px;
-
-      font-size: clamp(28px, 3vw, 42px);
-
-      color: #0f1d3a;
+      font-size: clamp(24px, 3vw, 34px);
     }
 
     .description {
-
       margin: 0;
-
       color: var(--muted);
-
-      font-size: 18px;
-
-      line-height: 1.7;
-
+      font-size: 16px;
+      line-height: 1.6;
       max-width: 760px;
     }
 
-    .note {
-
-      margin-top: 22px;
-
-      color: #61708a;
-
-      font-size: 14px;
-    }
-
-    /* BUTTON */
-
     .open-link {
-
       display: inline-flex;
-
       align-items: center;
       justify-content: center;
-
-      min-width: 220px;
-
+      min-width: 200px;
       text-decoration: none;
-
       color: #fff;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--header-blue),
-          var(--header-blue-dark)
-        );
-
+      background: var(--primary);
       border-radius: 999px;
-
-      padding: 16px 28px;
-
-      font-weight: 800;
-
-      font-size: 16px;
-
-      box-shadow:
-        0 10px 22px rgba(63, 85, 127, 0.28);
-
+      padding: 14px 22px;
+      font-weight: 750;
+      box-shadow: 0 10px 22px rgba(55, 93, 119, 0.26);
       transition: 180ms ease;
-
       white-space: nowrap;
     }
 
     .open-link:hover,
     .open-link:focus-visible {
-
-      transform: translateY(-2px);
-
-      filter: brightness(1.05);
-
+      background: var(--primary-dark);
+      transform: translateY(-1px);
       outline: none;
     }
 
-    /* MOBILE */
+    .note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
 
     @media (max-width: 760px) {
-
       .page {
         padding: 24px 0;
       }
 
       header {
-        padding: 28px;
-      }
-
-      .brand-row {
-
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .divider {
-        display: none;
-      }
-
-      .company-logo {
-        width: 180px;
+        padding: 26px;
       }
 
       .tabs {
@@ -398,7 +218,6 @@
         width: 100%;
       }
     }
-
   </style>
 </head>
 
@@ -406,99 +225,51 @@
 
   <main class="page">
 
-    <!-- HEADER -->
-
     <header>
+      <div class="eyebrow">BHC Consultants</div>
 
-      <div class="brand-row">
+      <h1>Standard Operating Procedure Library</h1>
 
-        <!-- GITHUB IMAGE FILE -->
-        <img
-          src="bhc_consultants_logo.jpg"
-          alt="BHC Consultants Logo"
-          class="company-logo"
-        />
-
-        <div class="divider"></div>
-
-        <div class="brand-text">
-
-          <h1>
-            Standard Operating Procedure Library
-          </h1>
-
-          <p class="subtitle">
-            Access SOP folders and operational documentation for departments,
-            governance, project delivery, finance, HR, and technical processes.
-          </p>
-
-        </div>
-
-      </div>
-
+      <p class="subtitle">
+        Access SOP folders and operational documentation for departments,
+        governance, project delivery, finance, HR, and technical processes.
+      </p>
     </header>
-
-    <!-- MAIN CONTENT -->
 
     <section class="tabs-wrap">
 
-      <!-- TABS -->
-
-      <div class="tabs">
+      <div class="tabs" role="tablist">
 
         <button class="tab-button active"
-          aria-controls="panel-financial">
-          Financial Planning &amp; Controls
+          aria-controls="panel-financial"
+          aria-selected="true"
+          role="tab">
+          Financial Planning & Controls
         </button>
 
         <button class="tab-button"
-          aria-controls="panel-business">
-          Business Development &amp; Marketing
+          aria-controls="panel-business"
+          aria-selected="false"
+          role="tab">
+          Business Development & Marketing
         </button>
 
         <button class="tab-button"
-          aria-controls="panel-it">
-          IT &amp; Data Governance
-        </button>
-
-        <button class="tab-button"
-          aria-controls="panel-quality">
-          Quality &amp; Technical Risk
-        </button>
-
-        <button class="tab-button"
-          aria-controls="panel-invoice">
-          Invoice Processing
-        </button>
-
-        <button class="tab-button"
-          aria-controls="panel-project">
-          Project Management
-        </button>
-
-        <button class="tab-button"
-          aria-controls="panel-ownership">
-          Ownership &amp; Governance
-        </button>
-
-        <button class="tab-button"
-          aria-controls="panel-hr">
-          HR SOP
+          aria-controls="panel-it"
+          aria-selected="false"
+          role="tab">
+          IT & Data Governance
         </button>
 
       </div>
 
-      <!-- FINANCIAL -->
-
+      <!-- Financial -->
       <article class="panel active" id="panel-financial">
 
         <div class="content-card">
 
           <div>
-
-            <h2>
-              Financial Planning &amp; Controls
-            </h2>
+            <h2>Financial Planning & Controls</h2>
 
             <p class="description">
               Access budgeting procedures, controls documentation,
@@ -508,7 +279,6 @@
             <p class="note">
               Opens in SharePoint/OneDrive using your Microsoft 365 permissions.
             </p>
-
           </div>
 
           <a class="open-link"
@@ -521,24 +291,22 @@
 
       </article>
 
-      <!-- BUSINESS -->
-
+      <!-- Business -->
       <article class="panel" id="panel-business">
 
         <div class="content-card">
 
           <div>
-
-            <h2>
-              Business Development &amp; Marketing
-            </h2>
+            <h2>Business Development & Marketing</h2>
 
             <p class="description">
-              Access proposal resources, marketing SOPs,
-              business development standards,
-              and client engagement documentation.
+              Access proposal resources, marketing SOPs, business development
+              standards, and client engagement documentation.
             </p>
 
+            <p class="note">
+              Opens in SharePoint/OneDrive using your Microsoft 365 permissions.
+            </p>
           </div>
 
           <a class="open-link"
@@ -552,175 +320,21 @@
       </article>
 
       <!-- IT -->
-
       <article class="panel" id="panel-it">
 
         <div class="content-card">
 
           <div>
-
-            <h2>
-              IT &amp; Data Governance
-            </h2>
+            <h2>IT & Data Governance</h2>
 
             <p class="description">
               Access SOPs related to information technology,
-              cybersecurity, systems governance,
-              and data management.
+              cybersecurity, systems governance, and data management.
             </p>
 
-          </div>
-
-          <a class="open-link"
-            href="#"
-            target="_blank">
-            Open Folder
-          </a>
-
-        </div>
-
-      </article>
-
-      <!-- QUALITY -->
-
-      <article class="panel" id="panel-quality">
-
-        <div class="content-card">
-
-          <div>
-
-            <h2>
-              Quality &amp; Technical Risk
-            </h2>
-
-            <p class="description">
-              Access quality assurance procedures,
-              technical review standards,
-              and operational risk management documentation.
+            <p class="note">
+              Opens in SharePoint/OneDrive using your Microsoft 365 permissions.
             </p>
-
-          </div>
-
-          <a class="open-link"
-            href="#"
-            target="_blank">
-            Open Folder
-          </a>
-
-        </div>
-
-      </article>
-
-      <!-- INVOICE -->
-
-      <article class="panel" id="panel-invoice">
-
-        <div class="content-card">
-
-          <div>
-
-            <h2>
-              Invoice Processing
-            </h2>
-
-            <p class="description">
-              Access invoice workflows,
-              accounting processing standards,
-              approvals, and billing procedure documentation.
-            </p>
-
-          </div>
-
-          <a class="open-link"
-            href="#"
-            target="_blank">
-            Open Folder
-          </a>
-
-        </div>
-
-      </article>
-
-      <!-- PROJECT -->
-
-      <article class="panel" id="panel-project">
-
-        <div class="content-card">
-
-          <div>
-
-            <h2>
-              Project Management
-            </h2>
-
-            <p class="description">
-              Access project delivery standards,
-              PM procedures, planning templates,
-              and project governance documentation.
-            </p>
-
-          </div>
-
-          <a class="open-link"
-            href="#"
-            target="_blank">
-            Open Folder
-          </a>
-
-        </div>
-
-      </article>
-
-      <!-- OWNERSHIP -->
-
-      <article class="panel" id="panel-ownership">
-
-        <div class="content-card">
-
-          <div>
-
-            <h2>
-              Ownership &amp; Governance
-            </h2>
-
-            <p class="description">
-              Access governance structures,
-              operational ownership standards,
-              executive procedures,
-              and organizational documentation.
-            </p>
-
-          </div>
-
-          <a class="open-link"
-            href="#"
-            target="_blank">
-            Open Folder
-          </a>
-
-        </div>
-
-      </article>
-
-      <!-- HR -->
-
-      <article class="panel" id="panel-hr">
-
-        <div class="content-card">
-
-          <div>
-
-            <h2>
-              HR SOP
-            </h2>
-
-            <p class="description">
-              Access human resources procedures,
-              onboarding documentation,
-              compliance standards,
-              and HR operational resources.
-            </p>
-
           </div>
 
           <a class="open-link"
@@ -738,19 +352,16 @@
   </main>
 
   <script>
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const panels = document.querySelectorAll(".panel");
 
-    const tabButtons =
-      document.querySelectorAll(".tab-button");
-
-    const panels =
-      document.querySelectorAll(".panel");
-
-    tabButtons.forEach((button, index) => {
+    tabButtons.forEach((button) => {
 
       button.addEventListener("click", () => {
 
         tabButtons.forEach((tab) => {
           tab.classList.remove("active");
+          tab.setAttribute("aria-selected", "false");
         });
 
         panels.forEach((panel) => {
@@ -758,14 +369,16 @@
         });
 
         button.classList.add("active");
+        button.setAttribute("aria-selected", "true");
 
-        panels[index].classList.add("active");
+        const panelId = button.getAttribute("aria-controls");
+        document.getElementById(panelId).classList.add("active");
 
       });
 
     });
-
   </script>
 
 </body>
 </html>
+```
