@@ -9,13 +9,18 @@
   <style>
 
     :root {
-      --teams-purple: #6264a7;
-      --teams-purple-dark: #464775;
-      --teams-bg: #f5f5f5;
+
+      /* MATCHED TO LOGO BACKGROUND */
+      --header-blue: #3f557f;
+      --header-blue-dark: #32476d;
+      --accent-blue: #6fb6ff;
+
+      --teams-bg: #eef2f8;
       --card-bg: #ffffff;
-      --text: #242424;
-      --muted: #616161;
-      --border: #e1dfdd;
+      --text: #1f2937;
+      --muted: #5f6b7a;
+      --border: #d9dee7;
+
       --shadow: 0 14px 36px rgba(0, 0, 0, 0.12);
       --radius: 22px;
     }
@@ -25,16 +30,34 @@
     }
 
     body {
+
       margin: 0;
-      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+
+      font-family:
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
       background:
-        radial-gradient(circle at top left, rgba(98, 100, 167, 0.22), transparent 34%),
-        linear-gradient(135deg, #f8f8ff 0%, var(--teams-bg) 55%, #eef1ff 100%);
+        radial-gradient(
+          circle at top left,
+          rgba(63, 85, 127, 0.18),
+          transparent 34%
+        ),
+        linear-gradient(
+          135deg,
+          #f6f8fc 0%,
+          var(--teams-bg) 55%,
+          #e7edf7 100%
+        );
+
       color: var(--text);
       min-height: 100vh;
     }
 
     .page {
+
       width: min(1200px, calc(100% - 32px));
       margin: 0 auto;
       padding: 40px 0;
@@ -43,113 +66,179 @@
     /* HEADER */
 
     header {
-      background: linear-gradient(
-        135deg,
-        var(--teams-purple),
-        var(--teams-purple-dark)
-      );
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--header-blue),
+          var(--header-blue-dark)
+        );
 
       color: #fff;
-      padding: 34px;
+
+      padding: 36px;
+
       border-radius: var(--radius);
+
       box-shadow: var(--shadow);
-      margin-bottom: 24px;
+
+      margin-bottom: 28px;
     }
 
     .brand-row {
+
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 34px;
       flex-wrap: wrap;
     }
 
     .company-logo {
-      width: 120px;
+
+      width: 260px;
       height: auto;
       object-fit: contain;
     }
 
-    .brand-text {
-      flex: 1;
+    .divider {
+
+      width: 1px;
+      height: 150px;
+
+      background:
+        rgba(255,255,255,0.28);
     }
 
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 13px;
-      font-weight: 700;
-      opacity: 0.9;
-      margin-bottom: 10px;
+    .brand-text {
+
+      flex: 1;
+      min-width: 300px;
     }
 
     h1 {
-      margin: 0 0 10px;
-      font-size: clamp(30px, 5vw, 50px);
+
+      margin: 0 0 14px;
+
+      font-size: clamp(34px, 5vw, 54px);
+
       line-height: 1.05;
-      font-weight: 750;
+
+      font-weight: 800;
+
+      letter-spacing: -0.02em;
     }
 
     .subtitle {
-      max-width: 760px;
+
       margin: 0;
+
+      max-width: 760px;
+
       color: rgba(255,255,255,0.88);
-      font-size: 17px;
-      line-height: 1.5;
+
+      font-size: 18px;
+
+      line-height: 1.7;
+    }
+
+    /* MAIN WRAPPER */
+
+    .tabs-wrap {
+
+      background:
+        rgba(255,255,255,0.82);
+
+      border:
+        1px solid rgba(225,223,221,0.85);
+
+      border-radius: var(--radius);
+
+      box-shadow:
+        0 10px 28px rgba(0,0,0,0.08);
+
+      backdrop-filter: blur(12px);
+
+      overflow: hidden;
     }
 
     /* TABS */
 
-    .tabs-wrap {
-      background: rgba(255,255,255,0.82);
-      border: 1px solid rgba(225,223,221,0.85);
-      border-radius: var(--radius);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
-      backdrop-filter: blur(12px);
-      overflow: hidden;
-    }
-
     .tabs {
+
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      padding: 14px;
+      gap: 14px;
+
+      padding: 18px;
+
       background: #fff;
-      border-bottom: 1px solid var(--border);
+
+      border-bottom:
+        1px solid var(--border);
     }
 
     .tab-button {
+
       border: 0;
-      border-radius: 14px;
-      background: #f4f4f4;
-      color: var(--muted);
+
+      border-radius: 16px;
+
+      background: #f3f5f9;
+
+      color: #32476d;
+
       cursor: pointer;
+
       font: inherit;
+
       font-weight: 700;
-      padding: 14px 18px;
+
+      font-size: 16px;
+
+      padding: 18px 20px;
+
       transition: 180ms ease;
+
       text-align: center;
+
       min-width: 220px;
+
       flex: 1 1 240px;
     }
 
     .tab-button:hover,
     .tab-button:focus-visible {
-      background: #ecebff;
-      color: var(--teams-purple-dark);
+
+      background: #e4ecfb;
+
+      color: var(--header-blue-dark);
+
       outline: none;
     }
 
     .tab-button.active {
-      background: var(--teams-purple);
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--header-blue),
+          var(--header-blue-dark)
+        );
+
       color: #fff;
-      box-shadow: 0 8px 18px rgba(98,100,167,0.28);
+
+      box-shadow:
+        0 8px 18px rgba(63, 85, 127, 0.28);
     }
 
     /* PANELS */
 
     .panel {
+
       display: none;
-      padding: 30px;
+
+      padding: 34px;
+
       animation: fadeIn 180ms ease-in-out;
     }
 
@@ -170,57 +259,105 @@
       }
     }
 
+    /* CONTENT CARD */
+
     .content-card {
+
       background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 30px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 22px;
+
+      padding: 34px;
+
       display: grid;
+
       grid-template-columns: 1fr auto;
-      gap: 24px;
+
+      gap: 30px;
+
       align-items: center;
     }
 
     h2 {
+
       margin: 0 0 12px;
-      font-size: clamp(24px, 3vw, 34px);
+
+      font-size: clamp(28px, 3vw, 42px);
+
+      color: #0f1d3a;
     }
 
     .description {
+
       margin: 0;
+
       color: var(--muted);
-      font-size: 16px;
-      line-height: 1.6;
+
+      font-size: 18px;
+
+      line-height: 1.7;
+
       max-width: 760px;
     }
 
+    .note {
+
+      margin-top: 22px;
+
+      color: #61708a;
+
+      font-size: 14px;
+    }
+
+    /* BUTTON */
+
     .open-link {
+
       display: inline-flex;
+
       align-items: center;
       justify-content: center;
-      min-width: 200px;
+
+      min-width: 220px;
+
       text-decoration: none;
+
       color: #fff;
-      background: var(--teams-purple);
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--header-blue),
+          var(--header-blue-dark)
+        );
+
       border-radius: 999px;
-      padding: 14px 22px;
-      font-weight: 750;
-      box-shadow: 0 10px 22px rgba(98,100,167,0.26);
+
+      padding: 16px 28px;
+
+      font-weight: 800;
+
+      font-size: 16px;
+
+      box-shadow:
+        0 10px 22px rgba(63, 85, 127, 0.28);
+
       transition: 180ms ease;
+
       white-space: nowrap;
     }
 
     .open-link:hover,
     .open-link:focus-visible {
-      background: var(--teams-purple-dark);
-      transform: translateY(-1px);
-      outline: none;
-    }
 
-    .note {
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 13px;
+      transform: translateY(-2px);
+
+      filter: brightness(1.05);
+
+      outline: none;
     }
 
     /* MOBILE */
@@ -232,7 +369,21 @@
       }
 
       header {
-        padding: 26px;
+        padding: 28px;
+      }
+
+      .brand-row {
+
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .divider {
+        display: none;
+      }
+
+      .company-logo {
+        width: 180px;
       }
 
       .tabs {
@@ -245,15 +396,6 @@
 
       .open-link {
         width: 100%;
-      }
-
-      .brand-row {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .company-logo {
-        width: 90px;
       }
     }
 
@@ -270,18 +412,16 @@
 
       <div class="brand-row">
 
-        <!-- YOUR GITHUB FILE NAME -->
+        <!-- GITHUB IMAGE FILE -->
         <img
           src="bhc_consultants_logo.jpg"
           alt="BHC Consultants Logo"
           class="company-logo"
         />
 
-        <div class="brand-text">
+        <div class="divider"></div>
 
-          <div class="eyebrow">
-            BHC Consultants
-          </div>
+        <div class="brand-text">
 
           <h1>
             Standard Operating Procedure Library
@@ -298,11 +438,13 @@
 
     </header>
 
-    <!-- TABS -->
+    <!-- MAIN CONTENT -->
 
     <section class="tabs-wrap">
 
-      <div class="tabs" role="tablist">
+      <!-- TABS -->
+
+      <div class="tabs">
 
         <button class="tab-button active"
           aria-controls="panel-financial">
@@ -392,8 +534,9 @@
             </h2>
 
             <p class="description">
-              Access proposal resources, marketing SOPs, business development
-              standards, and client engagement documentation.
+              Access proposal resources, marketing SOPs,
+              business development standards,
+              and client engagement documentation.
             </p>
 
           </div>
@@ -422,7 +565,8 @@
 
             <p class="description">
               Access SOPs related to information technology,
-              cybersecurity, systems governance, and data management.
+              cybersecurity, systems governance,
+              and data management.
             </p>
 
           </div>
@@ -450,7 +594,8 @@
             </h2>
 
             <p class="description">
-              Access quality assurance procedures, technical review standards,
+              Access quality assurance procedures,
+              technical review standards,
               and operational risk management documentation.
             </p>
 
@@ -479,7 +624,8 @@
             </h2>
 
             <p class="description">
-              Access invoice workflows, accounting processing standards,
+              Access invoice workflows,
+              accounting processing standards,
               approvals, and billing procedure documentation.
             </p>
 
@@ -508,8 +654,9 @@
             </h2>
 
             <p class="description">
-              Access project delivery standards, PM procedures,
-              planning templates, and project governance documentation.
+              Access project delivery standards,
+              PM procedures, planning templates,
+              and project governance documentation.
             </p>
 
           </div>
@@ -537,8 +684,10 @@
             </h2>
 
             <p class="description">
-              Access governance structures, operational ownership standards,
-              executive procedures, and organizational documentation.
+              Access governance structures,
+              operational ownership standards,
+              executive procedures,
+              and organizational documentation.
             </p>
 
           </div>
@@ -566,8 +715,10 @@
             </h2>
 
             <p class="description">
-              Access human resources procedures, onboarding documentation,
-              compliance standards, and HR operational resources.
+              Access human resources procedures,
+              onboarding documentation,
+              compliance standards,
+              and HR operational resources.
             </p>
 
           </div>
@@ -588,8 +739,11 @@
 
   <script>
 
-    const tabButtons = document.querySelectorAll(".tab-button");
-    const panels = document.querySelectorAll(".panel");
+    const tabButtons =
+      document.querySelectorAll(".tab-button");
+
+    const panels =
+      document.querySelectorAll(".panel");
 
     tabButtons.forEach((button, index) => {
 
@@ -604,6 +758,7 @@
         });
 
         button.classList.add("active");
+
         panels[index].classList.add("active");
 
       });
